@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f3eee6" />
+  <title>Mannu — Private Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="review-shell">
+    <section class="review-card" id="reviewCard">
+      <div class="review-empty" id="loading">
+        <div class="kicker">PRIVATE GIFT-KEEPER FILE</div>
+        <h1>Opening<br><em>Mannu’s dossier…</em></h1>
+        <p class="lede">Checking the private review token.</p>
+      </div>
+      <div id="reviewContent" hidden>
+        <header class="review-head">
+          <div>
+            <div class="kicker">PRIVATE GIFT-KEEPER FILE</div>
+            <h1>Mannu,<br><em>remembered.</em></h1>
+          </div>
+          <div class="review-meta">
+            <div id="reviewStatus"></div>
+            <div id="reviewUpdated"></div>
+          </div>
+        </header>
+        <div class="review-body">
+          <div class="review-index" id="reviewIndex"></div>
+          <div class="review-question" id="reviewQuestion"></div>
+          <div class="review-answer" id="reviewAnswer"></div>
+        </div>
+        <nav class="review-nav">
+          <button class="ghost" id="prevBtn">← previous</button>
+          <button class="primary" id="nextReviewBtn"><span>next</span><span>→</span></button>
+        </nav>
+      </div>
+    </section>
+  </main>
+  <script src="./review.js"></script>
+</body>
+</html>
