@@ -135,3 +135,19 @@ textarea.text-input{min-height:145px;resize:vertical}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
 }
+.save-disclosure{max-width:640px;margin:18px 0 0;padding:12px 14px;border-left:2px solid var(--red);color:var(--ink-3);font-size:12px;line-height:1.55}
+.actions-required{justify-content:flex-end}
+.required-note{margin-right:auto;align-self:center;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+.review-shell{width:min(100%,980px);margin:0 auto;min-height:100svh;padding:clamp(18px,4vw,44px)}
+.review-card{margin:auto 0;background:var(--paper-2);border:1px solid var(--line);box-shadow:var(--shadow);padding:clamp(22px,4vw,42px);min-height:560px;display:flex;flex-direction:column}
+.review-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:18px}
+.review-head h1{font-size:clamp(46px,7vw,78px);margin:12px 0 0}
+.review-meta{text-align:right;font-size:10px;letter-spacing:.12em;color:var(--ink-3);text-transform:uppercase}
+.review-body{display:flex;flex-direction:column;justify-content:center;flex:1;padding:46px 0}
+.review-index{font-size:11px;letter-spacing:.16em;color:var(--red);font-weight:800;text-transform:uppercase;margin-bottom:12px}
+.review-question{font:400 clamp(38px,5.4vw,64px)/.96 "Instrument Serif",serif;letter-spacing:-.04em;margin-bottom:18px}
+.review-answer{font-size:clamp(18px,2.2vw,26px);line-height:1.45;color:var(--ink-2);white-space:pre-wrap}
+.review-nav{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-top:1px solid var(--line);padding-top:18px}
+.review-empty{margin:auto;text-align:center;max-width:520px}
+.review-empty h1{font-size:60px}
+@media(max-width:620px){.required-note{font-size:9px}.review-card{min-height:calc(100svh - 36px)}.review-nav{grid-template-columns:1fr 1fr}.review-head{display:block}.review-meta{text-align:left;margin-top:12px}}
