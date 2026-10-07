@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#120f18" />
+  <meta name="theme-color" content="#100d16" />
   <meta name="description" content="A suspiciously specific identity verification game for Mannu." />
   <title>Proof of Mannu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,50 +12,77 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <div class="grain"></div>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
   <main class="shell">
-    <section id="intro" class="screen active">
-      <div class="eyebrow">PRIVATE DELIVERY PROTOCOL · #M4NNU</div>
-      <div class="hero-mark" aria-hidden="true">✦</div>
-      <h1>There’s a gift.<br><em>Apparently for Mannu.</em></h1>
-      <p class="lede">Tiny problem: the system refuses to hand it over to a random civilian. Prove you’re actually Mannu through a completely normal, definitely-not-suspicious identity check.</p>
+    <section id="intro" class="screen active" aria-labelledby="introTitle">
+      <div class="intro-layout">
+        <div class="intro-copy">
+          <div class="status-pill"><span></span> PRIVATE DELIVERY PROTOCOL · #M4NNU</div>
+          <h1 id="introTitle">There’s a gift.<br><em>Apparently for Mannu.</em></h1>
+          <p class="lede">Tiny problem: the vault refuses to hand it over to a random civilian. Complete a completely normal, definitely-not-suspicious identity check.</p>
 
-      <div class="notice">
-        <span class="notice-dot"></span>
-        <div>
-          <strong>No boring passwords.</strong>
-          <p>Your answers stay on this device until you choose to share your final verification receipt.</p>
+          <div class="notice">
+            <div class="notice-icon">✦</div>
+            <div>
+              <strong>Zero boring passwords.</strong>
+              <p>Your answers stay on this device until you explicitly share the final verification receipt.</p>
+            </div>
+          </div>
+
+          <button class="primary hero-cta" id="startBtn">
+            <span>prove i’m mannu</span>
+            <span class="arrow">↗</span>
+          </button>
+          <button class="text-btn" id="whyBtn">why is this so dramatic?</button>
+          <p class="tiny-note reveal-copy" id="whyText" hidden>Because “what’s your favorite color?” had absolutely no cinematic tension.</p>
         </div>
-      </div>
 
-      <button class="primary" id="startBtn">
-        <span>prove i’m mannu</span><span>↗</span>
-      </button>
-      <button class="ghost tiny" id="whyBtn">why is this so dramatic?</button>
-      <p class="tiny-note" id="whyText" hidden>Because “what’s your favorite color?” had absolutely no cinematic tension.</p>
+        <aside class="vault-card" aria-label="Gift vault status">
+          <div class="vault-top">
+            <span>GIFT VAULT</span>
+            <span class="live-dot">LOCKED</span>
+          </div>
+          <div class="vault-orbit" aria-hidden="true">
+            <div class="orbit-ring ring-a"></div>
+            <div class="orbit-ring ring-b"></div>
+            <div class="vault-core">M</div>
+          </div>
+          <div class="vault-meta">
+            <div><span>Recipient</span><strong>MANNU</strong></div>
+            <div><span>Clearance</span><strong>0%</strong></div>
+            <div><span>Method</span><strong>VIBES</strong></div>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <section id="game" class="screen">
+    <section id="game" class="screen" aria-live="polite">
       <header class="game-head">
         <button class="icon-btn" id="backBtn" aria-label="Previous question">←</button>
         <div class="progress-wrap">
           <div class="progress-meta">
             <span id="chapterLabel">IDENTITY CHECK</span>
-            <span id="progressLabel">01 / 20</span>
+            <span id="progressLabel">01 / 28</span>
           </div>
-          <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+          <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
         </div>
         <button class="icon-btn" id="saveExitBtn" aria-label="Save and exit">×</button>
       </header>
 
-      <div class="question-wrap">
-        <div class="question-number" id="questionNumber">CASE 01</div>
-        <h2 id="questionTitle"></h2>
-        <p class="question-sub" id="questionSub"></p>
-        <div id="answerArea" class="answer-area"></div>
-        <div class="actions">
-          <button class="ghost" id="skipBtn">skip this one</button>
-          <button class="primary compact" id="nextBtn"><span>lock answer</span><span>→</span></button>
+      <div class="question-stage" id="questionStage">
+        <div class="question-wrap">
+          <div class="question-number" id="questionNumber">CASE 01</div>
+          <h2 id="questionTitle"></h2>
+          <p class="question-sub" id="questionSub"></p>
+          <div id="answerArea" class="answer-area"></div>
+
+          <div class="actions">
+            <button class="ghost" id="skipBtn">skip this one</button>
+            <button class="primary compact" id="nextBtn"><span>lock answer</span><span class="arrow">→</span></button>
+          </div>
         </div>
       </div>
 
@@ -86,14 +113,14 @@
       </article>
 
       <div class="result-actions">
-        <button class="primary" id="shareBtn"><span>send verification receipt</span><span>↗</span></button>
+        <button class="primary" id="shareBtn"><span>send verification receipt</span><span class="arrow">↗</span></button>
         <div class="two">
-          <button class="ghost" id="copyBtn">copy</button>
+          <button class="ghost" id="copyBtn">copy receipt</button>
           <button class="ghost" id="downloadBtn">download</button>
         </div>
-        <button class="ghost tiny" id="editBtn">wait i want to change something</button>
+        <button class="text-btn center-btn" id="editBtn">wait, i want to change something</button>
       </div>
-      <p class="tiny-note center">Nothing is uploaded anywhere by this page. Sharing only happens when you press a share/copy/download button.</p>
+      <p class="tiny-note center">Nothing is uploaded anywhere by this page. Sharing happens only when you press share, copy, or download.</p>
     </section>
   </main>
 
