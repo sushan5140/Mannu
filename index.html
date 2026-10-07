@@ -3,124 +3,130 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#100d16" />
-  <meta name="description" content="A suspiciously specific identity verification game for Mannu." />
-  <title>Proof of Mannu</title>
+  <meta name="theme-color" content="#f3eee6" />
+  <meta name="description" content="A very unnecessary but extremely serious Mannu identity check." />
+  <title>For Mannu, apparently.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <div class="ambient ambient-a" aria-hidden="true"></div>
-  <div class="ambient ambient-b" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
-
-  <main class="shell">
-    <section id="intro" class="screen active" aria-labelledby="introTitle">
-      <div class="intro-layout">
+  <main class="app-shell">
+    <section id="intro" class="screen active intro-screen" aria-labelledby="introTitle">
+      <div class="intro-grid">
         <div class="intro-copy">
-          <div class="status-pill"><span></span> PRIVATE DELIVERY PROTOCOL · #M4NNU</div>
-          <h1 id="introTitle">There’s a gift.<br><em>Apparently for Mannu.</em></h1>
-          <p class="lede">Tiny problem: the vault refuses to hand it over to a random civilian. Complete a completely normal, definitely-not-suspicious identity check.</p>
+          <div class="kicker">PRIVATE DELIVERY / RECIPIENT CHECK</div>
+          <h1 id="introTitle">A gift showed up.<br><em>It says “Mannu”.</em></h1>
+          <p class="lede">I’d hand it over immediately, but apparently this very serious system needs proof that you’re the correct Mannu.</p>
 
-          <div class="notice">
-            <div class="notice-icon">✦</div>
-            <div>
-              <strong>Zero boring passwords.</strong>
-              <p>Your answers stay on this device until you explicitly share the final verification receipt.</p>
-            </div>
+          <div class="intro-actions">
+            <button class="primary" id="startBtn">
+              <span>start the ridiculous verification</span><span aria-hidden="true">↗</span>
+            </button>
+            <button class="text-btn" id="whyBtn">why is there a whole website for this?</button>
+            <p class="why-copy" id="whyText" hidden>Because asking “what’s your favorite color again?” was no longer survivable.</p>
           </div>
-
-          <button class="primary hero-cta" id="startBtn">
-            <span>prove i’m mannu</span>
-            <span class="arrow">↗</span>
-          </button>
-          <button class="text-btn" id="whyBtn">why is this so dramatic?</button>
-          <p class="tiny-note reveal-copy" id="whyText" hidden>Because “what’s your favorite color?” had absolutely no cinematic tension.</p>
         </div>
 
-        <aside class="vault-card" aria-label="Gift vault status">
-          <div class="vault-top">
-            <span>GIFT VAULT</span>
-            <span class="live-dot">LOCKED</span>
+        <aside class="parcel-wrap" aria-label="Gift dossier">
+          <div class="parcel">
+            <div class="parcel-topline">
+              <span>HANDLE WITH CARE</span>
+              <span>01 / MANNU</span>
+            </div>
+            <div class="address-block">
+              <small>TO</small>
+              <strong>MANNU</strong>
+              <span>wherever the drama currently is</span>
+            </div>
+            <div class="stamp-mark">M</div>
+            <div class="parcel-note">
+              <span>STATUS</span>
+              <strong>identity unconfirmed</strong>
+            </div>
           </div>
-          <div class="vault-orbit" aria-hidden="true">
-            <div class="orbit-ring ring-a"></div>
-            <div class="orbit-ring ring-b"></div>
-            <div class="vault-core">M</div>
-          </div>
-          <div class="vault-meta">
-            <div><span>Recipient</span><strong>MANNU</strong></div>
-            <div><span>Clearance</span><strong>0%</strong></div>
-            <div><span>Method</span><strong>VIBES</strong></div>
-          </div>
+          <div class="side-note">yes, this is unnecessarily elaborate.</div>
         </aside>
       </div>
     </section>
 
-    <section id="game" class="screen" aria-live="polite">
-      <header class="game-head">
+    <section id="game" class="screen game-screen">
+      <header class="game-topbar">
         <button class="icon-btn" id="backBtn" aria-label="Previous question">←</button>
-        <div class="progress-wrap">
-          <div class="progress-meta">
+        <div class="progress-block">
+          <div class="progress-labels">
             <span id="chapterLabel">IDENTITY CHECK</span>
             <span id="progressLabel">01 / 28</span>
           </div>
-          <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+          <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
         </div>
         <button class="icon-btn" id="saveExitBtn" aria-label="Save and exit">×</button>
       </header>
 
-      <div class="question-stage" id="questionStage">
-        <div class="question-wrap">
-          <div class="question-number" id="questionNumber">CASE 01</div>
-          <h2 id="questionTitle"></h2>
-          <p class="question-sub" id="questionSub"></p>
-          <div id="answerArea" class="answer-area"></div>
+      <div class="game-layout">
+        <aside class="case-strip" aria-hidden="true">
+          <div class="case-no" id="questionNumber">CASE 01</div>
+          <div class="case-line"></div>
+          <div class="case-caption">Mannu verification file</div>
+        </aside>
 
-          <div class="actions">
-            <button class="ghost" id="skipBtn">skip this one</button>
-            <button class="primary compact" id="nextBtn"><span>lock answer</span><span class="arrow">→</span></button>
+        <div class="question-stage" id="questionStage">
+          <div class="question-wrap">
+            <p class="question-eyebrow">CONFIDENTIAL QUESTION</p>
+            <h2 id="questionTitle"></h2>
+            <p class="question-sub" id="questionSub"></p>
+
+            <div id="answerArea" class="answer-area"></div>
+
+            <div class="actions">
+              <button class="ghost" id="skipBtn">skip</button>
+              <button class="primary compact" id="nextBtn">
+                <span>lock answer</span><span aria-hidden="true">→</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="microcopy" id="microcopy">No pressure. The machine is only judging a little.</div>
+      <div class="microcopy" id="microcopy">No pressure. This is only legally binding in the gift department.</div>
     </section>
 
-    <section id="result" class="screen">
-      <div class="result-top">
-        <div class="stamp">VERIFIED</div>
-        <div class="eyebrow">IDENTITY MATCH · 100% EXTREMELY SCIENTIFIC</div>
-        <h1>Okay, Mannu.<br><em>You may exist.</em></h1>
-        <p class="lede">Your highly classified Mannu Passport is ready. Send the verification receipt to the gift keeper so the gift doesn’t accidentally end up with some other Mannu from Sector 7.</p>
+    <section id="result" class="screen result-screen">
+      <div class="result-head">
+        <div class="verified-stamp">VERIFIED</div>
+        <div>
+          <div class="kicker">IDENTITY MATCH / MANNU CONFIRMED</div>
+          <h1>Fine.<br><em>You’re Mannu.</em></h1>
+          <p class="lede">Your classified dossier is complete. Send the receipt to the suspicious person holding your alleged gift.</p>
+        </div>
       </div>
 
-      <article class="passport" id="passport">
-        <div class="passport-head">
+      <article class="dossier" id="passport">
+        <div class="dossier-header">
           <div>
-            <span class="passport-kicker">PERSONALITY PASSPORT</span>
+            <span class="tiny-label">PERSONAL DOSSIER</span>
             <h3>MANNU</h3>
           </div>
-          <div class="seal">M</div>
+          <div class="dossier-code" id="passportCode"></div>
         </div>
         <div class="passport-grid" id="passportGrid"></div>
-        <div class="passport-footer">
+        <div class="dossier-footer">
           <span>AUTHENTICATED BY VIBES</span>
-          <span id="passportCode"></span>
+          <span>FOR GIFT-KEEPER EYES ONLY</span>
         </div>
       </article>
 
       <div class="result-actions">
-        <button class="primary" id="shareBtn"><span>send verification receipt</span><span class="arrow">↗</span></button>
+        <button class="primary" id="shareBtn"><span>send verification receipt</span><span>↗</span></button>
         <div class="two">
           <button class="ghost" id="copyBtn">copy receipt</button>
           <button class="ghost" id="downloadBtn">download</button>
         </div>
-        <button class="text-btn center-btn" id="editBtn">wait, i want to change something</button>
+        <button class="text-btn centered" id="editBtn">change an answer</button>
       </div>
-      <p class="tiny-note center">Nothing is uploaded anywhere by this page. Sharing happens only when you press share, copy, or download.</p>
+
+      <p class="privacy-note">Answers stay on this device until you explicitly share, copy, or download them.</p>
     </section>
   </main>
 
