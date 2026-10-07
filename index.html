@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#120f18" />
+  <meta name="description" content="A suspiciously specific identity verification game for Mannu." />
+  <title>Proof of Mannu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <main class="shell">
+    <section id="intro" class="screen active">
+      <div class="eyebrow">PRIVATE DELIVERY PROTOCOL · #M4NNU</div>
+      <div class="hero-mark" aria-hidden="true">✦</div>
+      <h1>There’s a gift.<br><em>Apparently for Mannu.</em></h1>
+      <p class="lede">Tiny problem: the system refuses to hand it over to a random civilian. Prove you’re actually Mannu through a completely normal, definitely-not-suspicious identity check.</p>
+
+      <div class="notice">
+        <span class="notice-dot"></span>
+        <div>
+          <strong>No boring passwords.</strong>
+          <p>Your answers stay on this device until you choose to share your final verification receipt.</p>
+        </div>
+      </div>
+
+      <button class="primary" id="startBtn">
+        <span>prove i’m mannu</span><span>↗</span>
+      </button>
+      <button class="ghost tiny" id="whyBtn">why is this so dramatic?</button>
+      <p class="tiny-note" id="whyText" hidden>Because “what’s your favorite color?” had absolutely no cinematic tension.</p>
+    </section>
+
+    <section id="game" class="screen">
+      <header class="game-head">
+        <button class="icon-btn" id="backBtn" aria-label="Previous question">←</button>
+        <div class="progress-wrap">
+          <div class="progress-meta">
+            <span id="chapterLabel">IDENTITY CHECK</span>
+            <span id="progressLabel">01 / 20</span>
+          </div>
+          <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+        </div>
+        <button class="icon-btn" id="saveExitBtn" aria-label="Save and exit">×</button>
+      </header>
+
+      <div class="question-wrap">
+        <div class="question-number" id="questionNumber">CASE 01</div>
+        <h2 id="questionTitle"></h2>
+        <p class="question-sub" id="questionSub"></p>
+        <div id="answerArea" class="answer-area"></div>
+        <div class="actions">
+          <button class="ghost" id="skipBtn">skip this one</button>
+          <button class="primary compact" id="nextBtn"><span>lock answer</span><span>→</span></button>
+        </div>
+      </div>
+
+      <div class="microcopy" id="microcopy">No pressure. The machine is only judging a little.</div>
+    </section>
+
+    <section id="result" class="screen">
+      <div class="result-top">
+        <div class="stamp">VERIFIED</div>
+        <div class="eyebrow">IDENTITY MATCH · 100% EXTREMELY SCIENTIFIC</div>
+        <h1>Okay, Mannu.<br><em>You may exist.</em></h1>
+        <p class="lede">Your highly classified Mannu Passport is ready. Send the verification receipt to the gift keeper so the gift doesn’t accidentally end up with some other Mannu from Sector 7.</p>
+      </div>
+
+      <article class="passport" id="passport">
+        <div class="passport-head">
+          <div>
+            <span class="passport-kicker">PERSONALITY PASSPORT</span>
+            <h3>MANNU</h3>
+          </div>
+          <div class="seal">M</div>
+        </div>
+        <div class="passport-grid" id="passportGrid"></div>
+        <div class="passport-footer">
+          <span>AUTHENTICATED BY VIBES</span>
+          <span id="passportCode"></span>
+        </div>
+      </article>
+
+      <div class="result-actions">
+        <button class="primary" id="shareBtn"><span>send verification receipt</span><span>↗</span></button>
+        <div class="two">
+          <button class="ghost" id="copyBtn">copy</button>
+          <button class="ghost" id="downloadBtn">download</button>
+        </div>
+        <button class="ghost tiny" id="editBtn">wait i want to change something</button>
+      </div>
+      <p class="tiny-note center">Nothing is uploaded anywhere by this page. Sharing only happens when you press a share/copy/download button.</p>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
