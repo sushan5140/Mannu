@@ -33,7 +33,14 @@ const API_URL="https://liyhjtyadbeozwjtrqqr.supabase.co/functions/v1/mannu-api";
 const microcopy=["No pressure. The machine is only judging a little.","Data quality: suspiciously adorable.","Gift clearance is looking promising.","We are definitely not building Mannu lore.","The scanner nodded. Very official.","One more answer added to the classified archives."];
 let index=Math.min(Number(localStorage.getItem("mannu_index")||0),questions.length-1);
 let answers={};
-let sessionId=localStorage.getItem("mannu_session_id")||crypto.randomUUID();
+function uuid(){
+  if(globalThis.crypto?.randomUUID) return crypto.randomUUID();
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,ch=>{
+    const r=crypto.getRandomValues(new Uint8Array(1))[0]&15,v=ch==="x"?r:(r&3)|8;
+    return v.toString(16);
+  });
+}
+let sessionId=localStorage.getItem("mannu_session_id")||uuid();
 localStorage.setItem("mannu_session_id",sessionId);
 function makeToken(){
   const bytes=new Uint8Array(24);crypto.getRandomValues(bytes);
@@ -104,19 +111,26 @@ function render(direction){
     answerArea.appendChild(grid);
   }
 }
-async function next(){
+function next(){
   const q=questions[index];
   if(!answers[q.key]||!String(answers[q.key]).trim()){toast("this one needs an answer 👀");return}
-  const ok=await saveRemote(false);
-  if(!ok){toast("couldn’t save yet — check connection");return}
-  if(index<questions.length-1){index++;save();render("next")}else finish();
-}
-else finish()}
-async function finish(){
   save();
-  const ok=await saveRemote(true);
-  if(!ok){toast("couldn’t seal the file yet — check connection");return}
-  buildPassport();show(result);
+  saveRemote(false).then(ok=>{if(!ok) console.warn("Answer saved locally; remote sync pending.")});
+  if(index<questions.length-1){
+    index++;
+    save();
+    render("next");
+  }else{
+    finish();
+  }
+}
+function finish(){
+  save();
+  buildPassport();
+  show(result);
+  saveRemote(true).then(ok=>{
+    if(!ok) toast("saved here — online sync will retry when you continue");
+  });
 }
 function code(){let x=questions.map(q=>answers[q.key]||"").join("|"),h=0;for(let i=0;i<x.length;i++)h=((h<<5)-h+x.charCodeAt(i))|0;return"MN-"+Math.abs(h).toString(36).toUpperCase().slice(0,6).padStart(6,"0")}
 function buildPassport(){const grid=$("#passportGrid");grid.innerHTML="";questions.forEach(q=>{const v=answers[q.key];if(!v||v==="—")return;const d=document.createElement("div");d.className="passport-item";d.innerHTML="<span>"+esc(q.label)+"</span><strong>"+esc(v)+"</strong>";grid.appendChild(d)});$("#passportCode").textContent=code()}
